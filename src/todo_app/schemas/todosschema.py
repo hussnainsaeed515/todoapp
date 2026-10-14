@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict
 
 # Todo Create Schema (Input - naya todo banana)
 class TodoCreate(BaseModel):
-    name: str
+    title: str
     description: str
 
 
@@ -18,7 +18,7 @@ class TodoUpdate(BaseModel):
 # Todo Response Schema (Output - todo return karna)
 class TodoResponse(BaseModel):
     id: int
-    name: str
+    title: str
     description: str
     is_done: bool
 
