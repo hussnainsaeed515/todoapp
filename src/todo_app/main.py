@@ -12,4 +12,4 @@ app.include_router(auth_router)
 
 @app.get("/")
 def home():
-    return {"message": "Todo API chal rahi hai"}
+    return {"message": "Todo API chal rahi hai"} 
