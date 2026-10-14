@@ -8,7 +8,7 @@ from todo_app.security import SECRET_KEY, ALGORITHM
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
 def get_db():
