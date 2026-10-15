@@ -7,8 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from alembic import context
 from todo_app.database import DATABASE_URL, engine
-import todo_app.models  # ensure models are registered
-from todo_app.models import Base
+from todo_app.models import Base  # imports models and Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
