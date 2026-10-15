@@ -12,14 +12,14 @@ class TodoCreate(BaseModel):
 class TodoUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
-    done: Optional[bool] = None
+    is_done: Optional[bool] = None
 
 
 # Todo Response Schema (Output - todo return karna)
 class TodoResponse(BaseModel):
     id: int
     title: str
-    description: str
+    description: Optional[str] = None
     is_done: bool
 
     model_config = ConfigDict(from_attributes=True)

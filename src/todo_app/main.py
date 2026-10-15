@@ -12,7 +12,7 @@ app = FastAPI()
 app.include_router(auth_router)
 
 # Todos routes include karna
-app.include_router(todos_router)
+app.include_router(todos_router, prefix="/todos")
 
 @app.get("/")
 def home():
