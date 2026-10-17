@@ -4,6 +4,13 @@ Ek modern aur secure **FastAPI** based RESTful API jo user authentication aur pe
 
 ---
 
+### 🌐 Live Deployment
+- **Live API URL**: [https://todoapp-ba7j.onrender.com](https://todoapp-ba7j.onrender.com)
+- **Live Interactive Docs (Swagger UI)**: [https://todoapp-ba7j.onrender.com/docs](https://todoapp-ba7j.onrender.com/docs)
+- **Live ReDoc**: [https://todoapp-ba7j.onrender.com/redoc](https://todoapp-ba7j.onrender.com/redoc)
+
+---
+
 ## 🚀 Features
 
 - **🔐 User Authentication & Authorization**:
@@ -81,7 +88,7 @@ todo_app/
 
 ### 2. Clone the Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/hussnainsaeed515/todoapp.git
 cd todo_app
 ```
 
@@ -160,7 +167,7 @@ Server chalne ke baad:
 
 ## 🧪 Testing API via Swagger UI
 
-1. Browser mein `http://127.0.0.1:8000/docs` open karein.
+1. Browser mein live Swagger UI **[https://todoapp-ba7j.onrender.com/docs](https://todoapp-ba7j.onrender.com/docs)** (ya local `http://127.0.0.1:8000/docs`) open karein.
 2. Pehle `/signup` ya `/login` endpoint se token hasil karein.
 3. Top right par **Authorize 🔓** button par click karein aur apna token paste karein.
 4. Ab sabhi protected `/todos` endpoints ko test karein!
