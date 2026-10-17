@@ -1,52 +1,63 @@
-# 📝 Todo App API
+# 📝 Todo App RESTful API
 
-Ek modern aur secure **FastAPI** based RESTful API jo user authentication aur personal todo management provide karti hai. Is project mein **PostgreSQL**, **SQLAlchemy ORM**, **Alembic migrations**, aur **JWT authentication** ka istemal kiya gaya hai.
+[![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Framework](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![ORM](https://img.shields.io/badge/SQLAlchemy-2.0-red.svg)](https://www.sqlalchemy.org/)
+[![Database](https://img.shields.io/badge/PostgreSQL-Neon-336791.svg?logo=postgresql&logoColor=white)](https://neon.tech)
+[![Deployment](https://img.shields.io/badge/Render-Live-success.svg?logo=render&logoColor=white)](https://todoapp-ba7j.onrender.com)
+
+A robust, secure, and modern **FastAPI** RESTful backend for task and todo management with user authentication. Built with **PostgreSQL**, **SQLAlchemy 2.0 ORM**, **Alembic migrations**, and **JWT-based authorization**, ensuring complete user data isolation and high performance.
 
 ---
 
-### 🌐 Live Deployment
-- **Live API URL**: [https://todoapp-ba7j.onrender.com](https://todoapp-ba7j.onrender.com)
-- **Live Interactive Docs (Swagger UI)**: [https://todoapp-ba7j.onrender.com/docs](https://todoapp-ba7j.onrender.com/docs)
-- **Live ReDoc**: [https://todoapp-ba7j.onrender.com/redoc](https://todoapp-ba7j.onrender.com/redoc)
+## 🌐 Live Deployment & Interactive Docs
+
+The API is deployed and accessible online:
+
+- **🚀 Live Base API**: [https://todoapp-ba7j.onrender.com](https://todoapp-ba7j.onrender.com)
+- **📑 Interactive Swagger UI**: [https://todoapp-ba7j.onrender.com/docs](https://todoapp-ba7j.onrender.com/docs)
+- **📖 ReDoc Documentation**: [https://todoapp-ba7j.onrender.com/redoc](https://todoapp-ba7j.onrender.com/redoc)
 
 ---
 
-## 🚀 Features
+## 🚀 Key Features
 
-- **🔐 User Authentication & Authorization**:
-  - Secure password hashing using `bcrypt`.
-  - JWT (JSON Web Tokens) authentication using `PyJWT`.
-  - `/signup`: Naya user register karna aur foran access token hasil karna.
-  - `/login`: OAuth2 password form ke zariye login aur token generation.
+- **🔐 Secure Authentication & Authorization**:
+  - Industry-standard password hashing using `bcrypt`.
+  - Stateless JSON Web Token (`PyJWT`) authentication.
+  - `/signup` endpoint: Register a new account and immediately receive an access token.
+  - `/login` endpoint: Authenticate using OAuth2 password flow.
 
-- **📋 Todo CRUD Operations (Protected)**:
-  - Har user sirf apne hi todos access, create, update, aur delete kar sakta hai (user isolation).
-  - `GET /todos/`: Current logged-in user ke sabhi todos dekhna.
-  - `POST /todos/todocreate`: Naya todo create karna.
-  - `PUT /todos/{todo_id}`: Todo ka title, description, ya status (`is_done`) update karna.
-  - `DELETE /todos/{todo_id}`: Todo delete karna.
+- **📋 Protected Todo Management (CRUD)**:
+  - **Strict User Isolation**: Users can only access, create, modify, and delete their own todos.
+  - `GET /todos/`: Fetch all todos belonging to the authenticated user.
+  - `POST /todos/todocreate`: Create a new todo item.
+  - `PUT /todos/{todo_id}`: Update title, description, or completion status (`is_done`).
+  - `DELETE /todos/{todo_id}`: Delete a specific todo.
 
-- **🗄️ Database & Migrations**:
-  - PostgreSQL database support (Neon serverless ya local PostgreSQL).
-  - SQLAlchemy 2.0 ORM models (`User`, `Todo`).
-  - Alembic ke zariye structured database migrations.
+- **🗄️ Database & Schema Management**:
+  - Relational PostgreSQL support (Neon serverless or local instance).
+  - Clean declarative models powered by **SQLAlchemy 2.0**.
+  - Structured, automated schema versioning with **Alembic**.
 
 - **📑 Interactive API Documentation**:
-  - Auto-generated Swagger UI docs (`/docs`).
-  - ReDoc documentation (`/redoc`).
+  - Automatically generated OpenAPI specifications with interactive Swagger UI and alternative ReDoc interface.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Backend Framework**: [FastAPI](https://fastapi.tiangolo.com/)
-- **ASGI Server**: [Uvicorn](https://www.uvicorn.org/)
-- **Database ORM**: [SQLAlchemy](https://www.sqlalchemy.org/)
-- **Database Driver**: [psycopg2-binary](https://www.psycopg.org/)
-- **Migrations**: [Alembic](https://alembic.sqlalchemy.org/)
-- **Validation & Schemas**: [Pydantic v2](https://docs.pydantic.dev/)
-- **Security & Tokens**: [PyJWT](https://pyjwt.readthedocs.io/), [bcrypt](https://github.com/pyca/bcrypt/)
-- **Dependency Management**: [Poetry](https://python-poetry.org/)
+| Technology | Purpose |
+|---|---|
+| **[FastAPI](https://fastapi.tiangolo.com/)** | High-performance Python web framework |
+| **[Uvicorn](https://www.uvicorn.org/)** | Lightning-fast ASGI server |
+| **[SQLAlchemy 2.0](https://www.sqlalchemy.org/)** | SQL toolkit and Object Relational Mapper |
+| **[PostgreSQL](https://www.postgresql.org/)** | Production-grade relational database |
+| **[psycopg2-binary](https://www.psycopg.org/)** | PostgreSQL database driver |
+| **[Alembic](https://alembic.sqlalchemy.org/)** | Database schema migrations |
+| **[Pydantic v2](https://docs.pydantic.dev/)** | Data validation and serialization |
+| **[PyJWT](https://pyjwt.readthedocs.io/) & [bcrypt](https://github.com/pyca/bcrypt/)** | Secure token handling and cryptographic password hashing |
+| **[Poetry](https://python-poetry.org/)** | Modern dependency management and packaging |
 
 ---
 
@@ -54,57 +65,64 @@ Ek modern aur secure **FastAPI** based RESTful API jo user authentication aur pe
 
 ```text
 todo_app/
-├── alembic/                  # Database migration scripts
+├── alembic/                  # Database migration scripts and versions
 │   ├── versions/             # Migration version history
-│   └── env.py                # Alembic environment config
+│   └── env.py                # Alembic migration environment
 ├── src/
 │   └── todo_app/
 │       ├── __init__.py
-│       ├── database.py       # Engine aur database session setup
-│       ├── dependencies.py   # Auth dependencies & get_db session generator
-│       ├── main.py           # FastAPI application entrypoint
-│       ├── models.py         # SQLAlchemy database models (User, Todo)
-│       ├── security.py       # Password hashing & JWT creation utilities
-│       ├── routers/          # API Route handlers
-│       │   ├── auth.py       # /signup aur /login endpoints
-│       │   └── todos.py      # /todos CRUD endpoints
-│       └── schemas/          # Pydantic models for validation & serialization
+│       ├── database.py       # Engine and sessionmaker setup
+│       ├── dependencies.py   # Auth dependencies & DB session generator
+│       ├── main.py           # FastAPI application entrypoint & middleware
+│       ├── models.py         # SQLAlchemy ORM models (User, Todo)
+│       ├── security.py       # Password hashing & JWT generation helpers
+│       ├── routers/          # Route controllers
+│       │   ├── auth.py       # /signup and /login endpoints
+│       │   └── todos.py      # Protected /todos CRUD endpoints
+│       └── schemas/          # Pydantic schemas for request & response validation
 │           ├── todosschema.py
 │           └── userschema.py
-├── .env.example              # Environment variables template
+├── .env.example              # Template for required environment variables
 ├── alembic.ini               # Alembic configuration
-├── pyproject.toml            # Poetry dependencies & project configuration
+├── pyproject.toml            # Project dependencies and metadata
 └── README.md                 # Project documentation
 ```
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Getting Started
 
 ### 1. Prerequisites
-- **Python 3.11+**
-- **Poetry** (Ya standard `pip`)
-- **PostgreSQL Database** (e.g., [Neon.tech](https://neon.tech/) ya local PostgreSQL)
+
+- **Python 3.11+** installed
+- **Poetry** installed ([Install Guide](https://python-poetry.org/docs/#installation)) or standard `pip`
+- A **PostgreSQL database** (e.g. [Neon](https://neon.tech) or a local PostgreSQL server)
 
 ### 2. Clone the Repository
+
 ```bash
 git clone https://github.com/hussnainsaeed515/todoapp.git
 cd todo_app
 ```
 
 ### 3. Install Dependencies
-Poetry ke zariye dependencies install karein:
+
+Install all project dependencies using Poetry:
+
 ```bash
 poetry install
 ```
 
-### 4. Configure Environment Variables
-`.env.example` file ko copy kar ke `.env` banayein:
+### 4. Environment Configuration
+
+Create a `.env` file based on `.env.example`:
+
 ```bash
 cp .env.example .env
 ```
 
-`.env` file khol kar apni database details aur secret keys configure karein:
+Open `.env` and fill in your database credentials and secret key:
+
 ```env
 # Database configuration
 DATABASE_URL=postgresql://username:password@host/database?sslmode=require
@@ -119,57 +137,64 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 ## 🔄 Database Migrations
 
-Alembic migrations apply karne ke liye yeh command chalayein:
+Apply the latest database migrations using Alembic:
 
 ```bash
 poetry run alembic upgrade head
 ```
 
-Agar models mein koi tabdeeli ki ho to nayi migration generate karne ke liye:
+To create a new migration after updating models:
+
 ```bash
-poetry run alembic revision --autogenerate -m "description_of_changes"
+poetry run alembic revision --autogenerate -m "describe_migration"
 ```
 
 ---
 
-## ▶️ Running the Application
+## ▶️ Running the Application Locally
 
-Development server start karne ke liye:
+Start the local development server:
 
 ```bash
 poetry run uvicorn todo_app.main:app --reload
 ```
 
-Server chalne ke baad:
-- **API URL**: `http://127.0.0.1:8000`
-- **Interactive Swagger UI**: `http://127.0.0.1:8000/docs`
-- **ReDoc Documentation**: `http://127.0.0.1:8000/redoc`
+Once running, the application will be accessible at:
+- **API Base URL**: `http://127.0.0.1:8000`
+- **Swagger UI**: `http://127.0.0.1:8000/docs`
+- **ReDoc**: `http://127.0.0.1:8000/redoc`
 
 ---
 
-## 📡 API Endpoints
+## 📡 API Reference
 
-### Authentication (`/`)
-| Method | Endpoint | Description | Auth Required |
-|---|---|---|---|
-| `POST` | `/signup` | Naya user register karein | ❌ |
-| `POST` | `/login` | Email aur password se login karein (OAuth2 Form) | ❌ |
+### 🔐 Authentication
 
-### Todos (`/todos`)
 | Method | Endpoint | Description | Auth Required |
-|---|---|---|---|
-| `GET` | `/todos/` | Current user ke sabhi todos dekhein | ✅ Bearer Token |
-| `POST` | `/todos/todocreate` | Naya todo create karein | ✅ Bearer Token |
-| `PUT` | `/todos/{todo_id}` | Todo update karein | ✅ Bearer Token |
-| `DELETE` | `/todos/{todo_id}` | Todo delete karein | ✅ Bearer Token |
+|:---:|---|---|:---:|
+| `POST` | `/signup` | Register a new user and receive a JWT access token | ❌ |
+| `POST` | `/login` | Authenticate with email/password via OAuth2 password form | ❌ |
+
+### 📋 Todos (User-Protected)
+
+| Method | Endpoint | Description | Auth Required |
+|:---:|---|---|:---:|
+| `GET` | `/todos/` | Retrieve all todos belonging to the logged-in user | ✅ Bearer Token |
+| `POST` | `/todos/todocreate` | Create a new todo item | ✅ Bearer Token |
+| `PUT` | `/todos/{todo_id}` | Update an existing todo (title, description, is_done) | ✅ Bearer Token |
+| `DELETE` | `/todos/{todo_id}` | Delete a specific todo item | ✅ Bearer Token |
 
 ---
 
-## 🧪 Testing API via Swagger UI
+## 🧪 Testing with Swagger UI
 
-1. Browser mein live Swagger UI **[https://todoapp-ba7j.onrender.com/docs](https://todoapp-ba7j.onrender.com/docs)** (ya local `http://127.0.0.1:8000/docs`) open karein.
-2. Pehle `/signup` ya `/login` endpoint se token hasil karein.
-3. Top right par **Authorize 🔓** button par click karein aur apna token paste karein.
-4. Ab sabhi protected `/todos` endpoints ko test karein!
+1. Open the interactive docs at **[https://todoapp-ba7j.onrender.com/docs](https://todoapp-ba7j.onrender.com/docs)** (or `http://127.0.0.1:8000/docs` locally).
+2. Execute the **`/signup`** or **`/login`** endpoint to receive an `access_token`.
+3. Click the **Authorize 🔓** button in the top right corner and paste your token.
+4. Now test any of the protected `/todos` endpoints!
 
+---
 
+## 📄 License
+
+This project is licensed under the MIT License - feel free to use and modify it for your projects.
